@@ -31,7 +31,7 @@ end
 
 group :development, :test do
   gem 'puma'
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :production do
@@ -41,6 +41,8 @@ group :production do
   gem 'fog'
   gem 'fog-aws'
 end
+
+gem 'rspec-rails'
 
 gem 'devise'
 gem 'carrierwave'
