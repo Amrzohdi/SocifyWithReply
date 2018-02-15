@@ -32,6 +32,7 @@ end
 group :development, :test do
   gem 'puma'
   gem 'pg'
+  gem 'cucumber-rails', :require => false
 end
 
 group :production do
@@ -63,6 +64,19 @@ gem 'sanitize'
 
 gem 'active_model_serializers'
 
+
+group :test do
+  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'database_cleaner'
+  gem 'chromedriver-helper'
+  gem 'capybara-selenium'
+  gem 'capybara'
+  gem 'webmock'
+  gem 'simplecov', :require => false
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'rspec_junit_formatter'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
