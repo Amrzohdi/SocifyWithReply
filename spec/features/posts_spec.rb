@@ -4,7 +4,7 @@ RSpec.feature "Posts", type: :feature do
   describe "hell" do
     it "should fuck" do
       visit "/"
-      expect(response.status).to to(:success)
+      expect(page).to have_content("Socify is an")
     end
   end
 end
