@@ -4,7 +4,7 @@ SimpleCov.start 'rails'
 require 'spec_helper'
 require 'capybara/rspec'
 require "selenium/webdriver"
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'support/factory_girl'
 require 'support/database_cleaner'
 require 'support/auth'

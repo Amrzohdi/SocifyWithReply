@@ -66,8 +66,8 @@ gem 'active_model_serializers'
 
 
 group :test do
-  gem 'factory_girl'
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_bot'
+  gem "factory_bot_rails", "~> 4.0"
   gem 'database_cleaner'
   gem 'chromedriver-helper'
   gem 'capybara-selenium'
