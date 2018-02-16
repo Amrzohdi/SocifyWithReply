@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "Posts", type: :feature do
+RSpec.feature "Posts", type: :feature, js: true do
   describe "hell" do
     it "should fuck" do
-      visit "/"
-      expect(page).to have_content("Socify is an")
+      sign_in!(create(:user))
     end
   end
 end
