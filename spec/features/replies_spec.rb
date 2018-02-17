@@ -9,7 +9,8 @@ RSpec.feature "Reply", type: :feature, js: true do
       sign_in!(user)
       visit "posts/#{Post.first.id}"
       within "#comment-#{Comment.first.id}" do
-        expect(page).to have_content("reply")
+        expect(page).to have_button("reply")
+        expect(page).to have_field("reply[comment]")
       end
     end
 
@@ -20,7 +21,6 @@ RSpec.feature "Reply", type: :feature, js: true do
       sign_in!(user)
       visit "posts/#{Post.first.id}"
       within "#comment-#{Comment.first.id}" do
-        expect(page).to have_content("reply")
         fill_in "reply[comment]",with: "this is my first reply section"
         click_on "reply"
         expect(page).to have_content("this is my first reply section")
