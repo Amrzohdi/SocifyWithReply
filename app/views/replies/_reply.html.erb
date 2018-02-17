@@ -8,6 +8,13 @@
       <div class="row">
         <span class="text"><%= reply.comment_html %></span>
       </div>
+      <div class="pull-right">
+        <% if belongs_to_user?(reply) %>
+          <%= link_to comment_path(reply), method: :delete, class: 'btn btn-danger btn-sm', remote: true, id: "destroy-#{reply.id}" do  %>
+            <% fa_icon 'trash' %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="replies" id="replies-<%=reply.id%>">
       <%reply.comments.each do|comment|%>
