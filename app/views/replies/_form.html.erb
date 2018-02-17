@@ -1,0 +1,6 @@
+<%= form_tag comment_reply_path(commentable.id), id: "reply_to_comment-#{commentable.id}", method: :post, remote: true do %>
+  <div class="form-group">
+    <%= text_field :reply, :comment , placeholder: 'Enter you reply', class: 'form-control input-mentionable', id: "reply_comment-#{commentable.id}" %>
+  </div>
+  <%= submit_tag :reply, class: 'btn btn-primary' %>
+<% end %>

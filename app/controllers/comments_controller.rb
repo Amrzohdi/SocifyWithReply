@@ -22,6 +22,15 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
+  def reply
+    commentable= Comment.find(params[:comment_id])
+    @reply = commentable.comments.new reply_params
+    if @reply.save
+      render file: "replies/create", format: :js
+    else
+      render json: @reply.errors, status: 401
+    end
+  end
   private
   def find_commentable
     @commentable_type = params[:commentable_type].classify
@@ -30,6 +39,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment).merge(user: current_user)
+  end
+
+  def reply_params
+    params.require(:reply).permit(:comment).merge(user: current_user)
   end
 end
 

@@ -1,0 +1,19 @@
+<% if reply.user %>
+  <div id="comment-<%= reply.id %>">
+    <div class="info">
+      <%= render 'shared/avatar', user: reply.user %>
+      <h4 class="name"><%= link_to reply.user.name, user_path(reply.user) %></h4>
+    </div>
+    <div class="content">
+      <div class="row">
+        <span class="text"><%= reply.comment_html %></span>
+      </div>
+    </div>
+    <div class="replies" id="replies-<%=reply.id%>">
+      <%reply.comments.each do|comment|%>
+        <%=render 'replies/reply', reply: comment%>
+      <%end%>
+    </div>
+    <%= render 'replies/form.html.erb', commentable: reply%>
+  </div>
+<% end %>
