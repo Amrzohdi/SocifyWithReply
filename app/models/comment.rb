@@ -8,6 +8,8 @@ class Comment < ActiveRecord::Base
   include Mention
 
   belongs_to :commentable, polymorphic: true, counter_cache: true
+  acts_as_commentable
+
   default_scope -> { order('created_at DESC') }
 
   # NOTE: install the acts_as_votable plugin if you
