@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :posts
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy] do
+    post 'reply', to: 'comments#reply'
+  end
   devise_for :users
   resources :users do
     member do
