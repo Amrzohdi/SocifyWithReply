@@ -5,14 +5,15 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_commentable, only: :create
-  respond_to :js
+  # respond_to :js
 
   def create
-    @comment = @commentable.comments.new do |comment|
-      comment.comment = params[:comment_text]
-      comment.user = current_user
+    @comment = @commentable.comments.new comment_params
+    if @comment.save
+      render file: "comments/create"
+    else
+      render json: @comment.errors, status: 401
     end
-    @comment.save
   end
 
   def destroy
@@ -26,4 +27,9 @@ class CommentsController < ApplicationController
     @commentable_type = params[:commentable_type].classify
     @commentable = @commentable_type.constantize.find(params[:commentable_id])
   end
+
+  def comment_params
+    params.require(:comment).permit(:comment).merge(user: current_user)
+  end
 end
+
