@@ -16,11 +16,11 @@
         <% end %>
       </div>
     </div>
+    <%= render 'replies/form.html.erb', commentable: reply%>
     <div class="replies" id="replies-<%=reply.id%>">
       <%reply.comments.each do|comment|%>
         <%=render 'replies/reply', reply: comment%>
       <%end%>
     </div>
-    <%= render 'replies/form.html.erb', commentable: reply%>
   </div>
 <% end %>
