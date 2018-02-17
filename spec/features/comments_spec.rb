@@ -1,4 +1,10 @@
 require 'rails_helper'
+require 'helpers/comments'
+
+RSpec.configure do |c|
+  c.include Comments
+end
+
 
 RSpec.feature "Comments", type: :feature, js: true do
   describe "create" do
@@ -16,14 +22,5 @@ RSpec.feature "Comments", type: :feature, js: true do
       expect(comments_count).to eq(Comment.count)
     end
 
-    def visit_fill_comment(comment="")
-      sign_in!(user)
-      visit "posts/#{post.id}"
-      within "#new_comment" do
-        fill_in "comment[comment]", with: comment
-        click_on "comment"
-      end
-    end
-  
   end
 end
