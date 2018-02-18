@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :deactivate
       get :mentionable
     end
+    resources :conversations, only: [:create, :show]
   end
 
   resources :events do
